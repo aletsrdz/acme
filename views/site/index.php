@@ -18,7 +18,7 @@ $this->registerJs("$('[data-toggle=\"popover\"]').popover()");
     <div class="jumbotron">
         <h1><?= Yii::t('app', 'congratulations')?></h1>
 
-        <p class="lead">You have successfully created your Yii-powered application.</p>
+        <p class="lead">You have successfully created your Yii-powered application!!!!!!.</p>
 
         <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com" data-toggle="modal" data-target="#about-modal">Get started with Yii</a></p>                
     </div>
