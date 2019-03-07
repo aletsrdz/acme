@@ -7,26 +7,6 @@ use yii\db\Migration;
  */
 class m190305_153721_create_table_user extends Migration
 {
-    /**
-     * {@inheritdoc}
-     */
-    /*
-    public function safeUp()
-    {
-
-    }
-    */
-    /**
-     * {@inheritdoc}
-     */
-    /*
-    public function safeDown()
-    {
-        echo "m190305_153721_create_table_user cannot be reverted.\n";
-
-        return false;
-    }
-    */
 
     public function up() {
         $this->createTable('user', [

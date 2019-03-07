@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Expression; //para utilizarlo para las fechas
 
 /**
  * This is the model class for table "user".
@@ -27,6 +28,10 @@ use Yii;
  */
 class User extends \yii\db\ActiveRecord
 {
+
+    const STATUS_INSERTED = 0; //Constantes 
+    const STATUS_ACTIVE = 1;
+    const STATUS_BLOCKED = 2;
     /**
      * {@inheritdoc}
      */
@@ -41,19 +46,48 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['uid', 'username', 'email', 'password', 'updated', 'auth_key'], 'required'],
+            [['username', 'email', 'password'], 'required'],
             [['status'], 'default', 'value' => null],
+            [['email'],'email'],
             [['status'], 'integer'],
-            [['contact_email', 'contact_phone'], 'boolean'],
             [['created', 'updated'], 'safe'],
-            [['uid', 'password', 'auth_key'], 'string', 'max' => 60],
+            //[['uid', 'password', 'auth_key'], 'string', 'max' => 60],
+            [['uid', 'password'], 'string', 'max' => 60],
             [['username'], 'string', 'max' => 45],
-            [['email'], 'string', 'max' => 255],
-            [['auth_key'], 'unique'],
+            [['email'], 'string', 'max' => 255],            
             [['email'], 'unique'],
             [['uid'], 'unique'],
         ];
     }
+
+    public function beforeValidate(){
+        if($this->isNewRecord){
+            $this->setUid();//Va a la función setUid
+            $this->status = 0;
+            //$this->setAuthKey();
+        }
+        return parent::beforeValidate(); 
+    }
+
+    public function beforeSave($insert){
+        if($this->isNewRecord){
+            $this->password = Yii::$app->getSecurity()->generatePasswordHash($this->password);
+        }
+        $this->updated = new Expression('NOW()');//Para guardar la fecha en el campo updated
+        return parent::beforeValidate($insert); 
+    }
+
+    public function setUid(){
+        //$this->uid = 'adfasdfasdfadf';
+        //$this->uid = Yii::$app->getSecurity()->generatePasswordHash(date('YmdHis').rand(1, 999999));
+        $this->uid = Yii::$app->security->generateRandomString(60);
+    }
+    /*
+    public function setAuthKey(){
+        $this->auth_key = Yii::$app->security->generateRandomString(60);
+    }
+    */
+
 
     /**
      * {@inheritdoc}
@@ -71,7 +105,7 @@ class User extends \yii\db\ActiveRecord
             'contact_phone' => Yii::t('app', 'Contact Phone'),
             'created' => Yii::t('app', 'Created'),
             'updated' => Yii::t('app', 'Updated'),
-            'auth_key' => Yii::t('app', 'Auth Key'),
+            //'auth_key' => Yii::t('app', 'Auth Key'),
         ];
     }
 
