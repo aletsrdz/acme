@@ -7,12 +7,13 @@ $this->registerJs("$('[data-toggle=\"popover\"]').popover()");
 ?>
 <div class="site-index">
 
-    <div class="dropdown">
-        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Lenguage<b class="caret"></b></a>
+<!--     <div class="dropdown">
+        <a href="#" data-toggle="dropdown" class="dropdown-toggle">Lenguaje<b class="caret"></b></a>
+        
         <?php
-            echo \app\components\LanguageDropdown::widget();
+            //echo \app\components\LanguageDropdown::widget();
         ?>
-    </div>
+    </div> -->
 
 
     <div class="jumbotron">

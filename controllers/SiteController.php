@@ -13,6 +13,8 @@ use app\models\User;
 
 class SiteController extends Controller
 {
+    
+    public $layout = 'justified';
     /**
      * {@inheritdoc}
      */
@@ -148,6 +150,7 @@ class SiteController extends Controller
 
     public function actionJustified()
     {
+        //$this->layout = 'justified';
         return $this->render('justified');
     }
 }

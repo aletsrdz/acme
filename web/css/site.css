@@ -6,29 +6,37 @@ body {
 .wrap {
     min-height: 100%;
     height: auto;
-    margin: 0 auto -60px;
-    padding: 0 0 60px;
+    /*margin: 0 auto -60px;*/
+    margin: 0 150px;
+    padding: 0 50px ;
+    /*border: 1px solid blue;*/
+
 }
 
 .wrap > .container {
-    padding: 70px 15px 20px;
+
+    padding: 70px 15px 20px;  
+    /*border: 1px solid purple;*/
 }
 
 .footer {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  margin-top: 40px;
+  height: 60px;
+  margin: 20px;
+  padding-top: 20px;
   border-top: 1px solid #eee;
+  /*border-top: 1px solid green;*/
 }
 
 .jumbotron {
   text-align: center;
   background-color: transparent;
+  border: 1px solid black;
 }
 
 .jumbotron .btn {
   padding: 14px 24px;
   font-size: 21px;
+  /*border: 1px solid yellow;*/
 }
 
 .not-set {
@@ -117,6 +125,9 @@ a.desc:after {
 .navbar {
   background-image: linear-gradient(to bottom, #f7f7f7 0%, #eee 100%);
   border: 1px solid #e5e5e5;
+  /*border: 1px solid red;*/
+
+
 }
 
 @media (min-width: 768px) {
